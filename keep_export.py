@@ -45,13 +45,13 @@ for gnote in gnotes:
         break
     # ファイル名を設定 (不正な文字は置換、空の場合はgnote.id使用)
     sanitized_title = sanitize_filename(gnote.title)
-    filename = os.path.join(output_dir, sanitized_title) if sanitized_title else os.path.join(output_dir, gnote.id)
+    filename = os.path.join(output_dir, sanitized_title + ".md") if sanitized_title else os.path.join(output_dir, gnote.id + ".md")
     
     # ファイルに書き出し
     with open(filename, 'w') as f:
         f.write(gnote.text)
 
     # ファイル作成の確認出力
-    print("File created: " + filename)
+    print("Markdown file created: " + filename)
     print("-------------------------------")
     count += 1
